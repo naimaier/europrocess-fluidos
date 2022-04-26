@@ -29,7 +29,7 @@
 	height: 60px;
 }
 
-.header__logo {
+#header-logo {
 	display: block;
 	margin: auto;
 	padding-top: 10px;
@@ -73,9 +73,12 @@
 	font-size: 1.2em;
 }
 
-.content__grid__item p {
+.content__grid__item input {
+	font-family: 'RobotoMono';
+	text-align: center;
 	font-size: 2em;
 	margin-top: 30px;
+	border: none;
 }
 
 @media screen and (min-width: 767px) {
