@@ -44,7 +44,7 @@
 }
 
 .content__title {
-	font-size: 1.5em;
+	font-size: 1em;
 	color: var(--secondary-color);
 	text-transform: uppercase;
 	text-align: center;
@@ -70,23 +70,23 @@
 }
 
 .content__grid__item h1 {
-	font-size: 1.2em;
+	font-size: 1em;
 }
 
 .content__grid__item input {
 	font-family: 'RobotoMono';
 	text-align: center;
 	font-size: 2em;
-	margin-top: 30px;
+	margin-top: 10px;
 	border: none;
 }
 
 @media screen and (min-width: 767px) {
 	.content__title {
-		font-size: 2em;
+		font-size: 1.5em;
 	}
 	.content__grid {
-		grid-template-columns: 600px;
+		grid-template-columns: 500px;
 		justify-content: space-around;
 	}
 }
