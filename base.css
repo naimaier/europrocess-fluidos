@@ -89,4 +89,7 @@
 		grid-template-columns: 500px;
 		justify-content: space-around;
 	}
+	.content__grid__item {
+		padding: 30px;
+	}
 }
