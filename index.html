@@ -26,11 +26,11 @@
             <h1 class="content__title">Sistema de Medição de Fluidos v2.0</h1>
 
             <section class="content__grid">
+                <div id="chart" style="width:auto;; height:300px;"></div>
                 <article class="content__grid__item">
                     <h1>Temperatura</h1>
                     <script type='text/javascript'>EVO_Text(true,'t09023',10,10,1,0,' readonly')</script>
                 </article>
-                <div id="chart" style="width:auto;; height:300px;"></div>
                 <article class="content__grid__item">
                     <h1>Vazão Atual</h1>
                     <script type='text/javascript'>EVO_Text(true,'t09502',10,10,1,0,' readonly')</script>
@@ -63,10 +63,12 @@
             });
             
             window.intervalId = setInterval(function() {
+                if (!dataElement.value) return;
+
                 var date = new Date();
-                var y = Math.random();	
-                y = dataElement.value;
-                data.push([date, y]);
+                var value = parseInt(dataElement.value);
+                
+                data.push([date, value]);
                 chart.updateOptions( { "file": data } );
             }, 1000);
         };
