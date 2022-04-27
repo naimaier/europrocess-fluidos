@@ -9,6 +9,9 @@
     <link rel="stylesheet" type="text/css" href="reset.css">
 	<link rel="stylesheet" type="text/css" href="base.css">
     <link rel="shortcut icon" href="favicon.ico">
+
+    <script type="text/javascript" src="dygraph.min.js"></script>
+    <link rel="stylesheet" href="dygraph.css">
 </head>
 <body>
 
@@ -25,15 +28,16 @@
             <section class="content__grid">
                 <article class="content__grid__item">
                     <h1>Temperatura</h1>
-                    <script type='text/javascript'>EVO_Text(true,'t09308',10,10,1,0,' readonly')</script>
+                    <script type='text/javascript'>EVO_Text(true,'t09023',10,10,1,0,' readonly')</script>
                 </article>
+                <div id="chart" style="width:auto;; height:300px;"></div>
                 <article class="content__grid__item">
                     <h1>Vazão Atual</h1>
-                    <script type='text/javascript'>EVO_Text(true,'t09308',10,10,1,0,' readonly')</script>
+                    <script type='text/javascript'>EVO_Text(true,'t09502',10,10,1,0,' readonly')</script>
                 </article>
                 <article class="content__grid__item">
                     <h1>Totalizador</h1>
-                    <script type='text/javascript'>EVO_Text(true,'t09308',10,10,1,0,' readonly')</script>
+                    <script type='text/javascript'>EVO_Text(true,'t09500',10,10,1,0,' readonly')</script>
                 </article>
             </section>
 
@@ -44,6 +48,28 @@
         AddPreCacheImage('header-logo', 'logo.png')
         EVO_CheckPassword('', 1);
 		EVO_PageInit(1000);
+    </script>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            var chartElement = document.getElementById("chart");
+            var dataElement = document.getElementById("t09023");
+
+            var data = [];
+
+            var chart = new Dygraph(chartElement, data, {
+                ylabel: "Temperatura (C°)",
+                labels: ["Hora", "Temperatura"]
+            });
+            
+            window.intervalId = setInterval(function() {
+                var date = new Date();
+                var y = Math.random();	
+                y = dataElement.value;
+                data.push([date, y]);
+                chart.updateOptions( { "file": data } );
+            }, 1000);
+        };
     </script>
 </body>
 </html>
