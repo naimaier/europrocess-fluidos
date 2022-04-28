@@ -26,17 +26,20 @@
             <h1 class="content__title">Sistema de Medição de Fluidos v2.0</h1>
 
             <section class="content__grid">
-                <div id="chart" style="width:auto;; height:300px;"></div>
-                <article class="content__grid__item">
-                    <h1>Temperatura</h1>
+                <div id="content__overlay">
+                    <div id="content__overlay__chart"></div>
+                    <button id="content__overlay__button" onclick="hideChart()">Fechar gráfico</button>
+                </div>
+                <article class="content__grid__item" onclick="displayChart()">
+                    <h1>Temperatura (C°)</h1>
                     <script type='text/javascript'>EVO_Text(true,'t09023',10,10,1,0,' readonly')</script>
                 </article>
                 <article class="content__grid__item">
-                    <h1>Vazão Atual</h1>
+                    <h1>Vazão Atual (L/h)</h1>
                     <script type='text/javascript'>EVO_Text(true,'t09502',10,10,1,0,' readonly')</script>
                 </article>
                 <article class="content__grid__item">
-                    <h1>Totalizador</h1>
+                    <h1>Totalizador (L)</h1>
                     <script type='text/javascript'>EVO_Text(true,'t09500',10,10,1,0,' readonly')</script>
                 </article>
             </section>
@@ -51,9 +54,15 @@
     </script>
 
     <script type="text/javascript">
-        window.onload = function () {
-            var chartElement = document.getElementById("chart");
-            var dataElement = document.getElementById("t09023");
+        var chartAlreadyConstructed = false;
+        var overlayElement = document.getElementById("content__overlay");
+        var chartElement = document.getElementById("content__overlay__chart");
+        var dataElement = document.getElementById("t09023");
+
+        function displayChart () {
+            overlayElement.style.display = "block";
+
+            if (chartAlreadyConstructed) return;
 
             var data = [];
 
@@ -63,15 +72,24 @@
             });
             
             window.intervalId = setInterval(function() {
+                // for testing
+                dataElement.value = Math.round( Math.random() * 10 ) / 10;
+                
                 if (!dataElement.value) return;
 
                 var date = new Date();
-                var value = parseInt(dataElement.value);
+                var value = parseFloat(dataElement.value);
                 
                 data.push([date, value]);
                 chart.updateOptions( { "file": data } );
             }, 1000);
+
+            chartAlreadyConstructed = true;
         };
+
+        function hideChart() {
+            overlayElement.style.display = "none";
+        }
     </script>
 </body>
 </html>

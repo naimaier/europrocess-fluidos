@@ -81,6 +81,43 @@
 	border: none;
 }
 
+#content__overlay {
+	position: fixed;
+	display: none;
+
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	
+	background-color: white;
+	opacity: 0.9;
+	z-index: 1;
+	cursor: pointer;
+}
+
+#content__overlay__chart {
+	margin-top: 80px;
+	margin-left: 0px;
+	margin-right: 5px;
+	width: auto !important;
+}
+
+#content__overlay__button {
+	border: none;
+	color: white;
+	background-color: #240163;
+	font-family: "RobotoMono";
+	height: 50px;
+	width: 150px;
+	margin-top: 30px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 @media screen and (min-width: 767px) {
 	.content__title {
 		font-size: 1.5em;
