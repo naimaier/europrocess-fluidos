@@ -1,11 +1,6 @@
 /* ------------- GENERAL ------------ */
-@font-face {
-	font-family: 'RobotoMono';
-	src: url(https://naimaier.github.io/europrocess-fluidos/RobotoMono-Regular.ttf);
-}
-
 :root {
-	font-family: 'RobotoMono';
+	font-family: 'Roboto', sans-serif;
 
 	/* Color scheme
 	https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=2b353f */
@@ -74,7 +69,7 @@
 }
 
 .content__grid__item input {
-	font-family: 'RobotoMono';
+	font-family: 'Roboto Mono', monospace;
 	text-align: center;
 	font-size: 1.5em;
 	margin-top: 10px;
@@ -107,9 +102,9 @@
 
 #content__overlay__button {
 	border: none;
+	font-family: 'Roboto', sans-serif;
 	color: white;
 	background-color: #240163;
-	font-family: "RobotoMono";
 	height: 50px;
 	width: 150px;
 	margin-top: 30px;
@@ -120,7 +115,7 @@
 
 @media screen and (min-width: 767px) {
 	.content__title {
-		font-size: 1.5em;
+		font-size: 1.6em;
 	}
 	.content__grid {
 		grid-template-columns: 500px;
