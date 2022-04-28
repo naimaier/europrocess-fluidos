@@ -1,0 +1,7 @@
+t <?xml version="1.0"?>
+t <form>
+c t09023<text><id>%s</id><value>%.1f</value></text>
+c t09500<text><id>%s</id><value>%.0f</value></text>
+c t09502<text><id>%s</id><value>%.0f</value></text>
+t </form>
+.
