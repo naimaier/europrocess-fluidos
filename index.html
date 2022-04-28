@@ -54,41 +54,50 @@
     </script>
 
     <script type="text/javascript">
-        var chartAlreadyConstructed = false;
         var overlayElement = document.getElementById("content__overlay");
         var chartElement = document.getElementById("content__overlay__chart");
         var dataElement = document.getElementById("t09023");
 
+        var data = [];
+        var chart;
+
+        window.intervalId = setInterval(function() {
+            // for testing
+            dataElement.value = Math.round( Math.random() * 10 ) / 10;
+
+            if (!dataElement.value) return;
+
+            var date = new Date();
+            var value = parseFloat(dataElement.value);
+            
+            data.push([date, value]);
+
+            // Keeps only 5 minutes
+            if (data.length > 300) {
+                data.shift()
+            }
+
+            if (!chart) return;
+            chart.updateOptions( { "file": data } );
+
+        }, 1000);
+
         function displayChart () {
             overlayElement.style.display = "block";
 
-            if (chartAlreadyConstructed) return;
-
-            var data = [];
-
-            var chart = new Dygraph(chartElement, data, {
-                ylabel: "Temperatura (C°)",
-                labels: ["Hora", "Temperatura"]
-            });
-            
-            window.intervalId = setInterval(function() {
-                // for testing
-                dataElement.value = Math.round( Math.random() * 10 ) / 10;
-                
-                if (!dataElement.value) return;
-
-                var date = new Date();
-                var value = parseFloat(dataElement.value);
-                
-                data.push([date, value]);
-                chart.updateOptions( { "file": data } );
-            }, 1000);
-
-            chartAlreadyConstructed = true;
+            if (chart) return;
+            createChart();
         };
 
         function hideChart() {
             overlayElement.style.display = "none";
+        }
+
+        function createChart() {
+            chart = new Dygraph(chartElement, data, {
+                ylabel: "Temperatura (C°)",
+                labels: ["Hora", "Temperatura"]
+            });
         }
     </script>
 </body>
