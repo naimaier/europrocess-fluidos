@@ -89,13 +89,12 @@
 
         function displayChart () {
             overlayElement.style.display = "block";
-
-            if (chart) return;
             createChart();
         };
 
         function hideChart() {
             overlayElement.style.display = "none";
+            chart = null;
         }
 
         function createChart() {
